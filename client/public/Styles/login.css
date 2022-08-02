@@ -1,0 +1,123 @@
+:root {
+  --black: rgb(21, 21, 21);
+  --white: rgb(252, 250, 250);
+  --whitish: rgb(231, 225, 225);
+  --pink: rgb(225, 22, 101);
+  --gray: gray;
+}
+
+.logIn__group {
+  position: relative;
+  margin-bottom: 45px;
+}
+.logIn__input {
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 300px;
+  border: none;
+  border-bottom: 1px solid var(--gray);
+}
+.logIn__input:focus {
+  outline: none;
+}
+
+/* LABEL ======================================= */
+.logIn__label {
+  color: #999;
+  font-size: 18px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+/* active state */
+.logIn__input:focus ~ .logIn__label,
+.logIn__input:valid ~ .logIn__label {
+  top: -20px;
+  font-size: 14px;
+  color: var(--pink);
+}
+
+/* BOTTOM BARS ================================= */
+.logIn__bar {
+  position: relative;
+  display: block;
+  width: 300px;
+}
+.logIn__bar:before,
+.logIn__bar:after {
+  content: "";
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: var(--pink);
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+.logIn__bar:before {
+  left: 50%;
+}
+.logIn__bar:after {
+  right: 50%;
+}
+
+/* active state */
+.logIn__input:focus ~ .logIn__bar:before,
+.logIn__input:focus ~ .logIn__bar:after {
+  width: 50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.logIn__highlight {
+  position: absolute;
+  height: 60%;
+  width: 100px;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* active state */
+.logIn__:focus ~ .logIn__highlight {
+  -webkit-animation: inputHighlighter 0.3s ease;
+  -moz-animation: inputHighlighter 0.3s ease;
+  animation: inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+  from {
+    background: var(--pink);
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+@-moz-keyframes inputHighlighter {
+  from {
+    background: var(--pink);
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+@keyframes inputHighlighter {
+  from {
+    background: var(--pink);
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}

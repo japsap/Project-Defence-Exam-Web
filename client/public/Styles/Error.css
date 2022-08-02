@@ -1,0 +1,46 @@
+:root{
+    --black: rgb(21, 21, 21);
+    --white: rgb(252, 250, 250);
+    --whitish: rgb(231, 225, 225);
+    --pink : rgb(225,22,101);
+    --gray : gray
+}
+
+.error__section{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: -1;
+}
+.error__img{
+    height: auto;
+    width: 700px;
+}
+
+.error__text{
+    margin-bottom: 20px;
+}
+.error__btn{
+    width: 160px;
+    height: 60px;
+    background-color: var(--pink);
+    border: none;
+    border-radius: 5px;
+
+}
+.error__btn a {
+    color: var(--white);
+    text-decoration: none;
+}
+.error__btn a:hover{
+    color: var(--white);
+}
+@media screen and (max-width:900px) {
+    .error__img{
+        width: 450px;
+    }
+    .error__btn{
+    width: 100%;
+    }
+}

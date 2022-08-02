@@ -1,0 +1,24 @@
+@import url('./Navbar.css');
+@import url('./Error.css');
+@import url('./login.css');
+
+:root{
+    --black: rgb(21, 21, 21);
+    --white: rgb(252, 250, 250);
+    --whitish: rgb(231, 225, 225);
+    --pink : rgb(225,22,101);
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Quicksand';
+}
+
+p{
+    color: rgb(144, 143, 143);
+}
+
+.pink{
+    color: var(--pink);
+}
