@@ -1,6 +1,7 @@
 @import url('./Navbar.css');
 @import url('./Error.css');
 @import url('./login.css');
+@import url('./Movies.css');
 
 :root{
     --black: rgb(21, 21, 21);

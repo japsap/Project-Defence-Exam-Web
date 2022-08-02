@@ -72,7 +72,6 @@
 
 
 @media screen and (min-width:900px){
-
     .navbar__mobile{
         display: none;
     }
@@ -82,9 +81,12 @@
     }
 
     /* navbar pc */
+
     .navbar__pc{
+        margin-bottom: 50px;
         display: flex;
         justify-content: space-evenly;
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
     }
     .navbar__logo{
         cursor: pointer;

@@ -8,9 +8,56 @@ import MainPage from "./Routes/MainPage";
 import DashBoard from "./Routes/DashBoard";
 import Login from "./Routes/Login";
 import Error from "./Routes/Error";
+import Movies from "./Routes/Movies";
+import MoviesInfo from './Components/Movies/MoviesInfo';
 
-//custom hooks
-import fire from "./auth/fire";
+
+//ffirebase cfg
+import fire from "./Hooks/fire";
+
+
+
+
+
+/* 
+
+ i could've created a log in with local storage and POST request to the 
+ sups but, i prefer using firebase for smaller apps just to make it cleaner 
+
+*/
+
+
+/* 
+   also could've used a "Redux" or useContext to keep the App.js cleaner but,
+   i did it that way because for now it helps me do things up faster later on ill be
+   putting in in a different file  
+*/
+
+
+//todo   main page design, to thing what the functionality of the website be will be?, Login modal
+
+/* 
+  auth done 
+  ui of log in done 
+  navbar done
+*/ 
+
+
+
+/*
+  also i couldve just used the 
+  setValues(state => {
+    values : ...state,
+    [e.target.name] : e.target.values
+  })
+
+  but firebase needs hooks as i made them "email" and "password" ,
+
+*/
+
+
+
+
 
 const App = () => {
   const [user, setUser] = useState("");
@@ -20,18 +67,22 @@ const App = () => {
   const [passwordError, setPasswordError] = useState("");
   const [hasAccount, setHasAccount] = useState(false);
 
+  //contansts
   const navigate = useNavigate();
 
+  //clear the inputs after a login or sign up
   const clearInputs = () => {
     setEmail("");
     setPassword("");
   };
 
+  //clear the errors after a login or sign up
   const clearErrors = () => {
     setEmailError("");
     setPasswordError("");
   };
 
+  //log in hhandler
   const LogInHandler = () => {
     fire
       .auth()
@@ -47,9 +98,9 @@ const App = () => {
             setPasswordError(err.message);
         }
       });
-    navigate("/dashboard");
   };
 
+  //sign up handler
   const handleSignUp = () => {
     clearErrors();
     fire
@@ -66,27 +117,31 @@ const App = () => {
             break;
         }
       });
-    navigate("/dashboard");
   };
 
+  //log out handler
   const handleLogout = () => {
     fire.auth().signOut();
   };
 
+  //authenthication listener for each user
   const AuthListener = () => {
     fire.auth().onAuthStateChanged((user) => {
       if (user) {
         clearInputs();
         setUser(user);
+        navigate("/dashboard");
       } else {
         setUser("");
       }
     });
   };
 
+  //when the page is rendered play the auth func
   useEffect(() => {
     AuthListener();
   }, []);
+
 
   return (
     <>
@@ -95,7 +150,7 @@ const App = () => {
         {user ? (
           <Route
             path="/dashboard"
-            element={<DashBoard handleLogout={handleLogout} />}
+            element={<DashBoard handleLogout={handleLogout} user={user}/>}
           />
         ) : (
           <Route path="/dashboard" element={<Error />} />
@@ -118,6 +173,8 @@ const App = () => {
             />
           }
         />
+        <Route path="/movies" element={<Movies/>}/>
+        <Route path="/movies/:moviesId" element={<MoviesInfo/>}/>
       </Routes>
     </>
   );

@@ -22,8 +22,8 @@ export const DummyData = {
         }, 
         {
             id: 5,
-            name: 'Service',
-            path: '/'
+            name: 'Movies',
+            path: '/movies'
         }
     ], 
     buttonTexts : {

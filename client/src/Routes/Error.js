@@ -28,7 +28,7 @@ const Error = () => {
               </h1>
               <p>{DummyData.pError.title}</p>
               <button className="error__btn">
-                <Link to="/">{DummyData.buttonTexts.title}</Link>
+                <Link to="/login">{DummyData.buttonTexts.title}</Link>
               </button>
             </Col>
           </Row>

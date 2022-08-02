@@ -1,9 +1,7 @@
 import React from "react";
 
-//bootrestrap
-import { Container, Row, Col } from "react-bootstrap";
-
 const Login = (props) => {
+
   const {
     email,
     password,
@@ -14,13 +12,15 @@ const Login = (props) => {
     hasAccount,
     setHasAccount,
     LogInHandler,
-    handleSignUp
-
+    handleSignUp,
   } = props;
+
   return (
     <>
       <div className="logIn__position">
         {hasAccount ? (
+          
+
           <div className="logIn">
             {/* sign in text */}
             <h1>
@@ -47,7 +47,7 @@ const Login = (props) => {
             <div className="logIn__group">
               <input
                 className="logIn__input"
-                type="text"
+                type="password"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -64,6 +64,10 @@ const Login = (props) => {
             </div>
           </div>
         ) : (
+
+
+
+
           /// email
           <div className="signIn">
             {/* sign in text */}
@@ -91,7 +95,7 @@ const Login = (props) => {
             <div className="logIn__group">
               <input
                 className="logIn__input"
-                type="text"
+                type="password"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -100,6 +104,7 @@ const Login = (props) => {
               <span className="logIn__bar"></span>
               <label className="logIn__label">Password</label>
             </div>
+
             <p className="err__msg">{passwordError}</p>
             {/* password */}
 
