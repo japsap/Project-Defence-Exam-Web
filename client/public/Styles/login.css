@@ -121,3 +121,24 @@
     background: transparent;
   }
 }
+
+
+
+
+.logIn__position{
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.signIn__btn{
+  background-color: var(--pink);
+  color: white;
+  width: 100px;
+  height: 60px;
+  border-radius: 5px;
+  border: none;
+}
+ .err__msg{
+  color: red;
+ }

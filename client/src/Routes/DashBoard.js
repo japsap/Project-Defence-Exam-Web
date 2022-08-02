@@ -1,8 +1,10 @@
 import React from 'react'
 
-const DashBoard = () => {
+const DashBoard = ({handleLogout}) => {
   return (
-    <div>DashBoard</div>
+    <div>
+      <button onClick={handleLogout}>Log out</button>
+    </div>
   )
 }
 

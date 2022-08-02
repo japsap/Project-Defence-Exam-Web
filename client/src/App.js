@@ -1,12 +1,12 @@
 // react components
 import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // Components
 import MainPage from "./Routes/MainPage";
 import DashBoard from "./Routes/DashBoard";
 import Login from "./Routes/Login";
-import Navbar from "./Components/Navbar/Navbar";
 import Error from "./Routes/Error";
 
 //custom hooks
@@ -19,6 +19,8 @@ const App = () => {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [hasAccount, setHasAccount] = useState(false);
+
+  const navigate = useNavigate();
 
   const clearInputs = () => {
     setEmail("");
@@ -45,6 +47,7 @@ const App = () => {
             setPasswordError(err.message);
         }
       });
+    navigate("/dashboard");
   };
 
   const handleSignUp = () => {
@@ -63,6 +66,7 @@ const App = () => {
             break;
         }
       });
+    navigate("/dashboard");
   };
 
   const handleLogout = () => {
@@ -86,27 +90,33 @@ const App = () => {
 
   return (
     <>
-      <Navbar />
-
       <Routes>
         //checking if the user is logged in
         {user ? (
-          <Route path="/dashboard" element={<DashBoard />} />
+          <Route
+            path="/dashboard"
+            element={<DashBoard handleLogout={handleLogout} />}
+          />
         ) : (
           <Route path="/dashboard" element={<Error />} />
         )}
         <Route path="/" element={<MainPage />} />
-        <Route path="/login" element={
-          <Login 
-            email={email}
-            password={password}
-            setEmail={setEmail}
-            setPassword={setPassword}
-            emailError={emailError}
-            passwordError={passwordError}
-            hasAccount={hasAccount}
-            setHasAccount={setHasAccount}
-          />} 
+        <Route
+          path="/login"
+          element={
+            <Login
+              email={email}
+              password={password}
+              setEmail={setEmail}
+              setPassword={setPassword}
+              emailError={emailError}
+              passwordError={passwordError}
+              hasAccount={hasAccount}
+              setHasAccount={setHasAccount}
+              handleSignUp={handleSignUp}
+              LogInHandler={LogInHandler}
+            />
+          }
         />
       </Routes>
     </>

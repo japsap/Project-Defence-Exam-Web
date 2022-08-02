@@ -8,7 +8,9 @@
     --whitish: rgb(231, 225, 225);
     --pink : rgb(225,22,101);
 }
-
+.cursor-pointer{
+    cursor: pointer;
+}
 *{
     padding: 0;
     margin: 0;
