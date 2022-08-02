@@ -14,7 +14,6 @@ import Navbar from "../Components/Navbar/Navbar";
 const Error = () => {
   return (
     <>
-      <Navbar />
       <div className="error__section ">
         <Container className="">
           <Row className="d-flex justify-content-center">

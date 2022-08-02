@@ -7,8 +7,8 @@ export const DummyData = {
         },
         {
             id: 2,
-            name: 'Login',
-            path: '/login'
+            name: 'Crypto',
+            path: '/crypto'
         },
         {
             id: 3,
@@ -18,7 +18,7 @@ export const DummyData = {
         {
             id: 4,
             name: 'Contact Us',
-            path: '/'
+            path: '/Contact-us'
         }, 
         {
             id: 5,
@@ -39,6 +39,9 @@ export const DummyData = {
 
     searchButton : {
         title: 'Search'
+    },
+    buttonLog : {
+        title : 'Log in'
     }
 
 

@@ -1,13 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
+//bootstrap
 import Card from "react-bootstrap/Card";
 
+
+//dummy data
 import { DummyData } from "../../DummyData";
 
-import { Link } from "react-router-dom";
+
 
 const MoviesList = (movies) => {
   const { Title, Year, imdbID, Poster } = movies;
+
   return (
     <div>
       <Card style={{ width: "20rem", height: "25rem" }} className="m-2">

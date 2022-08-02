@@ -11,8 +11,9 @@ import logo from '../../img/logo.png'
 import { AiOutlineBars } from 'react-icons/ai'
 import Sidebar from './Sidebar';
 
-const Navbar = () => {
+const Navbar = ({ user }) => {
   const [ toggle, setToggle ] = useState(false);
+
 
   const navigate = useNavigate()
 
@@ -47,7 +48,7 @@ const Navbar = () => {
 
 
                 <div className='navbar__btn'>
-                    <button>{DummyData.buttonTexts.title}</button>
+                    { user ? (<p className='mt-4'>{user.email}</p>) : (<button><Link to='/login'>{DummyData.buttonLog.title}</Link></button>)}
                 </div>
             </div>
             {/* navbar pc*/}

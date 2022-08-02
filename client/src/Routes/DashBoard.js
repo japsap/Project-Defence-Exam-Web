@@ -1,11 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const DashBoard = ({handleLogout, user}) => {
   return (
-    <div className='dashboard'>
-      <h1>Username: {user.email}</h1>
 
-      <button onClick={handleLogout}>Log out</button>
+    <div className='dashboard'>
+      <button className='btn__dashboard' onClick={handleLogout}>Log out</button>
+      <Link to='/'>go to main</Link>
     </div>
   )
 }

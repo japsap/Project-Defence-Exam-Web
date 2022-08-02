@@ -27,7 +27,9 @@ const Movies = () => {
     e.preventDefault();
 
     if(search == ''){
+      
       setInputError('Pleace enter a correct movie!')
+
     } else {
       setSearch('')
       setTitle(search)
@@ -37,7 +39,6 @@ const Movies = () => {
 
   return (
     <div>
-      <Navbar />
       <Container>
 
         <form onSubmit={onSubmit} className='d-flex justify-content-center my-5 form__movies'>

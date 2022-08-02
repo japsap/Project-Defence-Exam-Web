@@ -155,7 +155,16 @@
         transition: .4s;
     }
 
-    .navbar__btn button:hover{
+    .navbar__btn button a{
+        color: var(--white);
+        text-decoration: none;
+        transition: .4s;
+    }
+    .navbar__btn:hover button a{
+        color: var(--pink);
+    }
+
+    .navbar__btn button:hover {
         border: 1px solid var(--pink);
         background-color: var(--white);
         color: var(--pink);

@@ -13,6 +13,8 @@ import MoviesInfo from './Components/Movies/MoviesInfo';
 
 //ffirebase cfg
 import fire from "./Hooks/fire";
+import CommentUsers from "./Components/Comments/CommentUsers";
+import Navbar from "./Components/Navbar/Navbar";
 
 //provider
 
@@ -146,6 +148,7 @@ const App = () => {
 
   return (
     <>
+    <Navbar user={user}/>
       <Routes>
         //checking if the user is logged in
         {user ? (
