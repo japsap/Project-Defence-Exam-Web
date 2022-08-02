@@ -10,7 +10,7 @@ const GetMovies = (url, defaultValue, title) => {
                 const movies = response.Search;
                 setData(movies)
             })
-    },[])
+    }, [ title ])
 
     return [ data, setData]
 }

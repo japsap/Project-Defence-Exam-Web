@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
 // Components
 import MainPage from "./Routes/MainPage";
 import DashBoard from "./Routes/DashBoard";
@@ -14,6 +13,8 @@ import MoviesInfo from './Components/Movies/MoviesInfo';
 
 //ffirebase cfg
 import fire from "./Hooks/fire";
+
+//provider
 
 
 
@@ -174,7 +175,7 @@ const App = () => {
           }
         />
         <Route path="/movies" element={<Movies/>}/>
-        <Route path="/movies/:moviesId" element={<MoviesInfo/>}/>
+        <Route path="/movies/:moviesId" element={<MoviesInfo user={user}/>}/>
       </Routes>
     </>
   );

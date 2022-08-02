@@ -15,6 +15,7 @@
    /* navbar mobile */
    .toggle__mobileNavbar{
     position: fixed;
+    z-index: 1000;
     right: 0;
     padding: 20px;
     font-size: 30px;
@@ -24,7 +25,9 @@
    /* navbar mobile items */
    .navbar__mobile{
     position: fixed;
-    background-color: var(--whitish);
+    margin-bottom: -20px;
+    z-index: 100;
+    background-color: var(--white);
     box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
     height: 100%;
     width: 300px;
@@ -83,7 +86,7 @@
     /* navbar pc */
 
     .navbar__pc{
-        margin-bottom: 50px;
+      
         display: flex;
         justify-content: space-evenly;
         box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;

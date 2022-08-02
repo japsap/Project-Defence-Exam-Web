@@ -8,28 +8,50 @@ import Navbar from "../Components/Navbar/Navbar";
 import GetMovies from "../Hooks/GetMovies";
 
 //dummy data
+import { DummyData } from "../DummyData";
 
 
 const Movies = () => {
   const [ search, setSearch ] = useState('');
-  const [ title, setTitle] = useState('spiderman')
-  const [movies, setMovies] = GetMovies(
+  const [ title, setTitle] = useState('thor')
+
+  const [ inputError, setInputError] = useState('');
+
+  const [ movies ] = GetMovies(
     "http://www.omdbapi.com/?i=tt3896198&apikey=c8cb9cb0",
     [],
     title
   );
 
+  const onSubmit = ( e ) => {
+    e.preventDefault();
+
+    if(search == ''){
+      setInputError('Pleace enter a correct movie!')
+    } else {
+      setSearch('')
+      setTitle(search)
+      setInputError('')
+    }
+  }
+
   return (
     <div>
       <Navbar />
       <Container>
-        <form>
+
+        <form onSubmit={onSubmit} className='d-flex justify-content-center my-5 form__movies'>
         <input
           value={search}
-          onChange={(e) => setTitle(e.target.value)}
+          type="text"
+          placeholder="Search for movies..."
+          onChange={(e) => setSearch(e.target.value)}
         />
-        {/* <button>{DummyData}</button> */}
+         <button>{DummyData.searchButton.title}</button> 
         </form>
+
+        <p className="text-center err__msg lead">{inputError}</p>
+
         <Row className="d-flex justify-content-center">
           {movies.map((movie) => (
             <Col md={3} key={movie.imdbID} >

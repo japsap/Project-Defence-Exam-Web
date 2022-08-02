@@ -35,6 +35,11 @@ export const DummyData = {
     
     pError : {
         title : 'Its seems that we encountered an error, please go back to another page or refresh the website'
+    },
+
+    searchButton : {
+        title: 'Search'
     }
+
 
 }
