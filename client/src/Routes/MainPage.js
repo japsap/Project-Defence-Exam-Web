@@ -1,10 +1,13 @@
 import React from 'react'
-import Navbar from '../Components/Navbar/Navbar'
 
-const MainPage = () => {
+import Header from '../Components/Header/Header';
+import Sponsors from '../Components/Swiper/Sponsors';
+
+const MainPage = ({ user }) => {
   return (
     <div>
-      <h1>hello world</h1>
+      <Header user={user}/>
+      <Sponsors/>
     </div>
   )
 }

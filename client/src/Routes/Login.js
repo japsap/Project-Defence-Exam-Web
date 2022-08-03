@@ -1,7 +1,6 @@
 import React from "react";
 
 const Login = (props) => {
-
   const {
     email,
     password,
@@ -19,8 +18,6 @@ const Login = (props) => {
     <>
       <div className="logIn__position">
         {hasAccount ? (
-          
-
           <div className="logIn">
             {/* sign in text */}
             <h1>
@@ -59,15 +56,21 @@ const Login = (props) => {
             <p className="err__msg">{passwordError}</p>
             {/* password */}
             <div className="d-flex justify-content-between">
-              <button className="signIn__btn" onClick={LogInHandler}>Log in</button>
-              <p>New user? <span className="pink cursor-pointer" onClick={() => setHasAccount(!hasAccount)}>Sign Up</span></p>
+              <button className="signIn__btn" onClick={LogInHandler}>
+                Log in
+              </button>
+              <p>
+                New user?{" "}
+                <span
+                  className="pink cursor-pointer"
+                  onClick={() => setHasAccount(!hasAccount)}
+                >
+                  Sign Up
+                </span>
+              </p>
             </div>
           </div>
         ) : (
-
-
-
-
           /// email
           <div className="signIn">
             {/* sign in text */}
@@ -109,8 +112,18 @@ const Login = (props) => {
             {/* password */}
 
             <div className="d-flex justify-content-between">
-              <button className="signIn__btn" onClick={handleSignUp}>Sign up</button>
-              <p>Have an account? <span className="pink cursor-pointer" onClick={() => setHasAccount(!hasAccount)}>Log in</span></p>
+              <button className="signIn__btn" onClick={handleSignUp}>
+                Sign up
+              </button>
+              <p>
+                Have an account?{" "}
+                <span
+                  className="pink cursor-pointer"
+                  onClick={() => setHasAccount(!hasAccount)}
+                >
+                  Log in
+                </span>
+              </p>
             </div>
           </div>
         )}

@@ -42,7 +42,7 @@ export const DummyData = {
     },
     buttonLog : {
         title : 'Log in'
-    }
+    },
 
 
 }

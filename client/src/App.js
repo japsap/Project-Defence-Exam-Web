@@ -13,7 +13,6 @@ import MoviesInfo from './Components/Movies/MoviesInfo';
 
 //ffirebase cfg
 import fire from "./Hooks/fire";
-import CommentUsers from "./Components/Comments/CommentUsers";
 import Navbar from "./Components/Navbar/Navbar";
 
 //provider
@@ -84,6 +83,8 @@ const App = () => {
     setEmailError("");
     setPasswordError("");
   };
+
+
 
   //log in hhandler
   const LogInHandler = () => {
@@ -159,7 +160,7 @@ const App = () => {
         ) : (
           <Route path="/dashboard" element={<Error />} />
         )}
-        <Route path="/" element={<MainPage />} />
+        <Route path="/" element={<MainPage user={user}/>} />
         <Route
           path="/login"
           element={
