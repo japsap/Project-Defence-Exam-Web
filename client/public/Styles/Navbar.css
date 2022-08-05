@@ -9,6 +9,7 @@
 
 
 @media screen and (max-width:1200px) {
+
    .navbar__pc{
     display: none;
    }
@@ -30,7 +31,7 @@
     z-index: 100;
     background-color: var(--white);
     box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
-    height: 100%;
+    height: 120%;
     width: 300px;
    }
 
@@ -56,7 +57,7 @@
    .mobile_navbar_button {
     padding: 20px;
    }
-   .mobile_navbar_button button{
+   .mobile_navbar_button .sidebar__btn1{
      width: 100%;
      height: 60px;
 
@@ -70,12 +71,44 @@
 
      cursor: pointer;
    }
+   .mobile_navbar_button .sidebar__btn1 a {
+    color: var(--white);
+    text-decoration: none;
+   }
+   .mobile_navbar_button .sidebar__btn2 a {
+    color: var(--pink);
+    text-decoration: none;
+   }
+   .mobile_navbar_button .sidebar__btn2{
+    width: 100%;
+    height: 60px;
+
+    background-color: var(--white);
+    color: var(--pink);
+    border: 1px solid var(--pink);
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+
+    font-size: 16px;
+
+    cursor: pointer;
+   }
 }
 
 
 
 
 @media screen and (min-width:1200px){
+    .cart__btn span{
+        font-size: 16px;
+        margin-left: 5px;
+    }
+    .name__navbar{
+        margin-top: -15px;
+    }
+    .cart__btn__2{
+        display: none;
+    }
     .navbar__mobile{
         display: none;
     }

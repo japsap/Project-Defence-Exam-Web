@@ -13,8 +13,7 @@ import Navbar from "../Components/Navbar/Navbar";
 
 const Error = () => {
   return (
-    <>
-      <div className="error__section ">
+      <div className="error__section">
         <Container className="">
           <Row className="d-flex justify-content-center">
             <Col md={6}>
@@ -32,8 +31,7 @@ const Error = () => {
             </Col>
           </Row>
         </Container>
-      </div>
-    </>
+    </div>
   );
 };
 

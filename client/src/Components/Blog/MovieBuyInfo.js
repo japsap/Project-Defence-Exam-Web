@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router";
 
 import { Container } from "react-bootstrap";
@@ -6,12 +6,13 @@ import { Container } from "react-bootstrap";
 import useFetchId from "../../Hooks/useFetchId";
 import { DummyData } from "../../DummyData";
 
-const MovieBuyInfo = () => {
+const MovieBuyInfo = ({ handleChange, message }) => {
     const { movesInfoId } = useParams();
 
     const [ bloga, b ] = useFetchId('http://localhost:5050/jsonstore/blogs', [], movesInfoId)
 
-    console.log(b)
+    console.log(message)
+
   return (
     <div>
       <header
@@ -29,7 +30,10 @@ const MovieBuyInfo = () => {
         <p>{b.text}</p>
 
 
-        <button className="Buy__btn__info">{DummyData.buttonBuy.title}</button>
+        <button className="Buy__btn__info" onClick={() => handleChange(b)}>{DummyData.buttonBuy.title}</button>
+
+
+        <p>{message}</p>
       </Container>
     </div>
   );

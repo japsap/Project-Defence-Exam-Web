@@ -59,7 +59,7 @@ const Comments = () => {
                 {/* avatar */}
                 <div className="hstack gap-2 mb-1">
                   <Link to="/dashboard" style={{ textDecoration: "none" }}>
-                    <p>{currentUser != null ? currentUser?.email : "Unknown"}</p>
+                    <p>{currentUser != null ? currentUser?.displayName : "Unknown"}</p>
                   </Link>
                 </div>
                 {/* avatar */}

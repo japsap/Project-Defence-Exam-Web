@@ -4,7 +4,8 @@
 @import url('./Movies.css');
 @import url('./Header.css');
 @import url('./updateUser.css');
-@import url('./blog.css');
+@import url('./MoviesInfo.css');
+@import url('./Cart.css');
 
 :root{
     --black: rgb(21, 21, 21);

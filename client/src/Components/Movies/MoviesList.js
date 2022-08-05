@@ -15,7 +15,7 @@ const MoviesList = (movies) => {
 
   return (
     <div>
-      <Card style={{ width: "20rem", height: "25rem" }} className="m-2">
+      <Card style={{ width:"auto",height: "25rem" }} className="m-2">
         <Card.Img
           variant="top"
           className="movies__list__img"

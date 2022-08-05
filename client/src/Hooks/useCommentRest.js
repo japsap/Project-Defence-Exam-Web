@@ -11,10 +11,10 @@ const useCommentRest = () => {
         }).then(res => res.json());
     }
 
-    const postBlog = (title, text, img) => {
+    const postBlog = (title, text, img, price, qty) => {
         return fetch(urlBlogs, {
             method: 'POST',
-            body: JSON.stringify({title, text, img})
+            body: JSON.stringify({ title, text, img, price, qty})
         }) .then(res => res.json())
     }
 

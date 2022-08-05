@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 
 //compoenents
@@ -21,18 +21,20 @@ const BlogPage = () => {
     setBlogs((blog) => blog.filter((x) => x._id != blogId));
   };
 
+
+
   return (
     <div className="blog__page">
       <Container>
         <Row className="d-flex justify-content-evenly mt-5">
           <h1 className="text-center mb-5 underline-container">Buy a movie here :)</h1>
-          {blogs.length < 0 ? (
+          {blogs.length === 0 ? (
             <h1>No blogs :p</h1>
           ) : (
             <>
               {blogs.map((blog) => (
                 <Col md={3} key={blog._id}>
-                  <MovieBuyList {...blog} deleteTask={deleteTask} />
+                  <MovieBuyList {...blog} deleteTask={deleteTask}/>
                 </Col>
               ))}
             </>

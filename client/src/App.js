@@ -12,12 +12,11 @@ import MoviesInfo from "./Components/Movies/MoviesInfo";
 import Navbar from "./Components/Navbar/Navbar";
 import Blog from "./Routes/BlogPage";
 import MovieBuyInfo from "./Components/Blog/MovieBuyInfo";
-import Cart from './Components/Navbar/Cart';
+import Cart from "./Components/Navbar/Cart";
 
 //ffirebase cfg
 import { signOut, onAuthStateChanged } from "firebase/auth";
 import { auth } from "./Hooks/fire";
-
 
 //provider
 
@@ -54,21 +53,19 @@ import { auth } from "./Hooks/fire";
 */
 
 const App = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   //loginout the user
   const handleSignout = () => {
     signOut(auth);
   };
 
-
   //setting the user with the global variable
   const [user, setUser] = useState("");
 
-
   const authListener = () => {
     onAuthStateChanged(auth, (user) => {
-      if(user) {
+      if (user) {
         setUser(user);
       } else {
         setUser("");
@@ -80,11 +77,19 @@ const App = () => {
     authListener();
   }, []);
 
+  const [moviesCart, setMoviesCart] = useState([]);
+  const [message, setMessage] = useState('')
+  const [items, setItems] = useState(0);
 
+  const handleChange = (item) => {
+    moviesCart.push(item);
+    setItems((prev) => prev + 1);
+    alert('Movie successfully added!')
+  };
 
   return (
     <>
-      <Navbar/>
+      <Navbar items={items} />
       <Routes>
         //checking if the user is logged in
         {user ? (
@@ -96,15 +101,25 @@ const App = () => {
           <Route path="/dashboard" element={<Error />} />
         )}
         <Route path="/" element={<MainPage />} />
-
         <Route path="/login" element={<Login />} />
-      
-        <Route path='/moviesBuy' element={<Blog/>}/>
-        <Route path="/moviesBuy/:movesInfoId" element={<MovieBuyInfo/>}/>
-        <Route path='/cart' element={<Cart/>}/>
-
+        <Route path="/moviesBuy" element={<Blog />} />
+        <Route
+          path="/moviesBuy/:movesInfoId"
+          element={<MovieBuyInfo handleChange={handleChange} />}
+        />
+        <Route
+          path="/cart"
+          element={
+            <Cart
+              moviesCart={moviesCart}
+              setMoviesCart={setMoviesCart}
+              setItems={setItems}
+              items={items}
+            />
+          }
+        />
         <Route path="/movies" element={<Movies />} />
-        <Route path="/movies/:moviesId" element={<MoviesInfo/>} />
+        <Route path="/movies/:moviesId" element={<MoviesInfo message={message}/>} />
       </Routes>
     </>
   );

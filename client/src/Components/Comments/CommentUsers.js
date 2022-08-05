@@ -43,7 +43,7 @@ const CommentUsers = ({ comment }) => {
               className="fw-bold link-dark pe-1"
               style={{ textDecoration: "none" }}
             >
-              {currentUser?.email != null ? currentUser?.email : "Unknown"}
+              {currentUser?.email != null ? currentUser?.displayName : "Unknown"}
             </Link>
             <span className="text-muted text-nowrap">now</span>
           </div>

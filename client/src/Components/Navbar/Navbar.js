@@ -9,17 +9,15 @@ import logo from "../../img/logo.png";
 
 //icons
 import { AiOutlineBars } from "react-icons/ai";
-import { BsCart } from 'react-icons/bs';
+import { BsCart } from "react-icons/bs";
 
 //components
 import Sidebar from "./Sidebar";
 
-
 //firebase
 import { getAuth } from "firebase/auth";
 
-
-const Navbar = () => {
+const Navbar = ({ items }) => {
   const [toggle, setToggle] = useState(false);
 
   const navigate = useNavigate();
@@ -29,7 +27,6 @@ const Navbar = () => {
   };
 
   const { currentUser } = getAuth();
-
 
   return (
     <div className="navbar__fixed">
@@ -43,7 +40,7 @@ const Navbar = () => {
           <AiOutlineBars />
         </div>
 
-        {toggle && <Sidebar />}
+        {toggle && <Sidebar items={items}/>}
         {/* navbar mobile */}
 
         {/* navbar pc*/}
@@ -65,10 +62,25 @@ const Navbar = () => {
               <div className="d-flex">
                 <img
                   className="mx-2"
-                  style={{ height: "50px", width: "50px", borderRadius:'50%', objectFit:'cover' }}
-                  src={currentUser.photoURL == null ? 'https://cdn4.vectorstock.com/i/thumb-large/62/38/avatar-13-vector-42526238.jpg' : currentUser.photoURL}
+                  style={{
+                    height: "50px",
+                    width: "50px",
+                    borderRadius: "50%",
+                    objectFit: "cover",
+                  }}
+                  src={
+                    currentUser.photoURL == null
+                      ? "https://cdn4.vectorstock.com/i/thumb-large/62/38/avatar-13-vector-42526238.jpg"
+                      : currentUser.photoURL
+                  }
                 />
-                <p className="mt-3 ml-2">{currentUser.email == null ? 'Uknown' : currentUser.email}</p>
+                <div className="d-block">
+                  <p className="ml-2 email__navbar"> {currentUser.email == null ? "uknown@gmail.com" : currentUser.email}</p>
+                  <p className="ml-2 name__navbar">  {currentUser.displayName == null ? <div className="d-flex"><span style={{color:'rgb(225,22,101)'}}>@</span><p className="text-black">Uknown</p></div>: <span className="d-flex"><span style={{color:'rgb(225,22,101)'}}>@</span><span className="text-black">{`${currentUser.displayName}`}</span></span> }
+                </p>
+                  </div>
+                
+                
               </div>
             ) : (
               <button>
@@ -76,11 +88,12 @@ const Navbar = () => {
               </button>
             )}
           </div>
-          <div className="cart__btn">
-            <Link to='/cart'>
-              <BsCart/>
+          <div className="cart__btn d-flex">
+            <Link to="/cart">
+              <BsCart />
             </Link>
-            </div>
+            <span>{items}</span>
+          </div>
         </div>
         {/* navbar pc*/}
       </div>

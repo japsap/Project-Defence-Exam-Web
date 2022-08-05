@@ -2,22 +2,34 @@
     {
         "_id" : 0,
         "title" : "The Avengers End Game", 
-        "price" : "5$",
+        "price" : 5,
+        "qty" : 1,
         "text" : "After half of all life is snapped away by Thanos, the Avengers are left scattered and divided. Now with a way to reverse the damage, the Avengers and their allies must assemble once more and learn to put differences aside in order to work together and set things right.",
         "img" : "https://www.denofgeek.com/wp-content/uploads/2019/04/avengers-endgame-ending-explained.jpg?fit=1280%2C720"
     },
     {
         "_id" : 1,
         "title" : "Minions rise of Gru", 
-        "price" : "4$",
+        "price" : 4,
+        "qty" : 1,
         "text" : "A fanboy of a supervillain supergroup known as the Vicious 6, Gru hatches a plan to become evil enough to join them. Luckily, he gets some mayhem-making back-up from his loyal followers, the Minions.",
         "img" : "https://filmdaily.co/wp-content/uploads/2022/06/minionstwo-04-1300x975.jpg"
     },
     {
         "_id" : 2,
         "title" : "Top Gun 2022", 
-        "price" : "10$",
+        "price" : 10,
+        "qty" : 1,
         "text" : "Code-named Maverick, Pete Mitchell, an impetuous, daredevil Navy-pilot ace, is accepted into Top Gun, Miramar's elite Fighter School. But there, the impulsive young pilot will have to compete with the best of the best, including Iceman, a brilliant and highly competitive fellow student.",
         "img" : "https://cdn4.focus.bg/fakti/photos/big/632/top-gan-maverik-opredeleno-nadskochi-predshestvenika-si-treilar-1.jpg"
+    },
+    {
+        "_id" : 3,
+        "title" : "Prey 2022", 
+        "price" : 15,
+        "qty" : 1,
+        "text" : "Naru, a skilled female warrior, fights to protect her tribe against one of the first highly-evolved Predators to land on Earth.The origin story of the Predator in the world of the Comanche Nation 300 years ago.",
+        "img" : "https://img.moviesjoy.to/resize/188x288/9e/78/9e787d5c33d52c0eba974b5636db9994/9e787d5c33d52c0eba974b5636db9994.jpg"
     }
+    
 ]

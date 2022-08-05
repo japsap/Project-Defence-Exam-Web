@@ -6,7 +6,7 @@ import { upload } from '../../Hooks/fire';
 const UserUpdate = ({handleSignout}) => {
   const { currentUser } = getAuth()
   const [ photo, setPhoto ] = useState(null);
-  const [photoUrl, setPhotoUrl] = useState('https://cdn4.vectorstock.com/i/thumb-large/62/38/avatar-13-vector-42526238.jpg');
+  const [ photoUrl, setPhotoUrl ] = useState('https://cdn4.vectorstock.com/i/thumb-large/62/38/avatar-13-vector-42526238.jpg');
   const [ name, setName ] = useState('');
 
 
@@ -16,18 +16,21 @@ const UserUpdate = ({handleSignout}) => {
     }
   }
 
-  function handleClick() {
-    upload(photo, currentUser, name);
+  function handleClick(e) {
+    e.preventDefault();
+    if(name == '' || photo == '' || name.length < 7){
+      alert('Please enter a correct profile data!')
+    } else {
+      upload(photo, currentUser, name);
+    }
+    
   }
-
-
 
   useEffect(() => {
     if(currentUser?.photoURL){
       setPhotoUrl(currentUser.photoURL)
     }
   }, [currentUser])
-
 
 
   return (

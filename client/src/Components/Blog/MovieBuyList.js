@@ -11,17 +11,18 @@ import { DummyData } from "../../DummyData";
 import { getAuth } from "firebase/auth";
 
 //icons
-import { FcDeleteDatabase, FcAbout } from "react-icons/fc";
-import { MdOutlineAddShoppingCart } from 'react-icons/md';
+import { FcDeleteDatabase,  } from "react-icons/fc";
+
 
 const MovieBuyList = ({ _id, title, text, img, deleteTask }) => {
   const { currentUser } = getAuth();
 
   const subText = text.substring(0, 50);
 
+
   return (
     <div>
-      <Card style={{ width: "20rem", height: "30rem" }} className="m-2">
+      <Card style={{ width: "auto", height: "30rem" }} className="m-2 layButton" >
         <Card.Img variant="top" className="movies__list__img" src={img} />
         <Card.Body>
           <Card.Title>{title}</Card.Title>

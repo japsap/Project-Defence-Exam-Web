@@ -5,9 +5,7 @@ import { auth } from "../Hooks/fire";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  onAuthStateChanged,
   getAuth,
-  sendEmailVerification,
 } from "firebase/auth";
 
 const Login = () => {
@@ -17,12 +15,9 @@ const Login = () => {
   const [passwordError, setPasswordError] = useState("");
   const [hasAccount, setHasAccount] = useState(false);
 
-  const navigate = useNavigate();
+  const { currentUser } = getAuth();
 
-  const clearInuts = () => {
-    setEmail("");
-    setPassword("");
-  };
+  const navigate = useNavigate();
 
   const clearErrors = () => {
     setPasswordError("");
@@ -53,10 +48,8 @@ const Login = () => {
     clearErrors();
     createUserWithEmailAndPassword(auth, email, password)
     .then(() => {
-      sendEmailVerification(email)
-    }) .then(() => {
         navigate("/dashboard");
-      })
+    })
       .catch((err) => {
         switch (err.code) {
           case "auth/email-already-in-use":
@@ -135,7 +128,6 @@ const Login = () => {
             </h1>
             <p className="mb-5">Create an account at our newest platform</p>
             {/* sign in text */}
-
             <div className="logIn__group">
               <input
                 className="logIn__input"
