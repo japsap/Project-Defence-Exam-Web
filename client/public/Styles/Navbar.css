@@ -8,7 +8,7 @@
 
 
 
-@media screen and (max-width:900px) {
+@media screen and (max-width:1200px) {
    .navbar__pc{
     display: none;
    }
@@ -75,9 +75,22 @@
 
 
 
-@media screen and (min-width:900px){
+@media screen and (min-width:1200px){
     .navbar__mobile{
         display: none;
+    }
+    .cart__btn a {
+        color: var(--pink);
+    }
+    .cart__btn a:hover{
+        color: var(--pink);
+    }
+    .cart__btn{
+        font-size: 30px;
+        position: absolute;
+        right: 0;
+        padding: 50px;
+        cursor: pointer;
     }
 
     .toggle__mobileNavbar{

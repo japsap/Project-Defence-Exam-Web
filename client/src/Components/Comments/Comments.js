@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { getAuth } from "firebase/auth";
 import { Link } from "react-router-dom";
 
 
@@ -7,9 +8,10 @@ import useFetchComments from '../../Hooks/useFetchComments';
 
 import CommentUsers from "./CommentUsers";
 
-const Comments = ({ user }) => {
+const Comments = () => {
 
-  const { email, photoURL } = user;
+  const { currentUser }  = getAuth();
+  console.log(currentUser)
 
   //useStates hooks
   const [ comment , setComment] = useState("");
@@ -48,16 +50,16 @@ const Comments = ({ user }) => {
                 className="rounded-circle me-3"
                 style={{ width: "3rem", height: "3rem" }}
                 src={
-                  photoURL == null
+                  currentUser == null
                     ? "https://cdn4.vectorstock.com/i/thumb-large/62/38/avatar-13-vector-42526238.jpg"
-                    : photoURL
+                    : currentUser?.photoURL
                 }
               />
               <div className="flex-grow-1">
                 {/* avatar */}
                 <div className="hstack gap-2 mb-1">
                   <Link to="/dashboard" style={{ textDecoration: "none" }}>
-                    <p>{user ? email : "Unknown"}</p>
+                    <p>{currentUser != null ? currentUser?.email : "Unknown"}</p>
                   </Link>
                 </div>
                 {/* avatar */}
@@ -89,7 +91,7 @@ const Comments = ({ user }) => {
 
                 {commentsUser.map((comment, i) => (
                   <div className="mb-5" key={i}>
-                    <CommentUsers comment={comment} user={user} />
+                    <CommentUsers comment={comment}/>
                   </div>
                 ))}
 

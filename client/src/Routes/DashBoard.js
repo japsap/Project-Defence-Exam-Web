@@ -1,14 +1,21 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import MoviePoster from "../Components/Blog/MoviePoster";
+import UserUpdate from "../Components/UserUpdate/UserUpdate";
 
-const DashBoard = ({handleLogout, user}) => {
+const DashBoard = ({ handleSignout }) => {
+  //toggle between updating the user or posting the blog
+  const [blogPost, setBlogPost] = useState(true);
+
   return (
-
-    <div className='dashboard'>
-      <button className='btn__dashboard' onClick={handleLogout}>Log out</button>
-      <Link to='/'>go to main</Link>
+    <div className="dashboard">
+       <div className="d-flex justify-content-center my-5">
+        <button className="dashboard mx-2 btn-1" onClick={() => setBlogPost(prev => !prev)}>Post a blog</button>
+        <button className="dasboard mx-2 btn-2" onClick={() => setBlogPost(prev => !prev)}>Update Profile</button>
+      </div>
+      {blogPost ? <MoviePoster/> : <UserUpdate handleSignout={handleSignout} />}
     </div>
-  )
-}
+  );
+};
 
-export default DashBoard
+export default DashBoard;

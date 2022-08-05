@@ -3,10 +3,10 @@ import React from 'react'
 import Header from '../Components/Header/Header';
 import Sponsors from '../Components/Swiper/Sponsors';
 
-const MainPage = ({ user }) => {
+const MainPage = () => {
   return (
     <div>
-      <Header user={user}/>
+      <Header/>
       <Sponsors/>
     </div>
   )

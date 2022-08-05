@@ -1,18 +1,74 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
-const Login = (props) => {
-  const {
-    email,
-    password,
-    setEmail,
-    setPassword,
-    emailError,
-    passwordError,
-    hasAccount,
-    setHasAccount,
-    LogInHandler,
-    handleSignUp,
-  } = props;
+import { auth } from "../Hooks/fire";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  getAuth,
+  sendEmailVerification,
+} from "firebase/auth";
+
+const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [hasAccount, setHasAccount] = useState(false);
+
+  const navigate = useNavigate();
+
+  const clearInuts = () => {
+    setEmail("");
+    setPassword("");
+  };
+
+  const clearErrors = () => {
+    setPasswordError("");
+    setEmailError("");
+  };
+
+  const handleLogin = () => {
+    clearErrors();
+    signInWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        navigate("/dashboard");
+      })
+      .catch((err) => {
+        switch (err.code) {
+          case "auth/invalid-email":
+          case "auth/user-disabled":
+          case "auth/user-not-found":
+            setEmailError(err.message);
+            break;
+          case "auth/wrong-password":
+            setPasswordError(err.message);
+            break;
+        }
+      });
+  };
+
+  const handleSignup = () => {
+    clearErrors();
+    createUserWithEmailAndPassword(auth, email, password)
+    .then(() => {
+      sendEmailVerification(email)
+    }) .then(() => {
+        navigate("/dashboard");
+      })
+      .catch((err) => {
+        switch (err.code) {
+          case "auth/email-already-in-use":
+          case "auth/invalid-email":
+            setEmailError(err.message);
+            break;
+          case "auth/weak-password":
+            setPasswordError(err.message);
+            break;
+        }
+      });
+  };
 
   return (
     <>
@@ -56,7 +112,7 @@ const Login = (props) => {
             <p className="err__msg">{passwordError}</p>
             {/* password */}
             <div className="d-flex justify-content-between">
-              <button className="signIn__btn" onClick={LogInHandler}>
+              <button className="signIn__btn" onClick={handleLogin}>
                 Log in
               </button>
               <p>
@@ -112,7 +168,7 @@ const Login = (props) => {
             {/* password */}
 
             <div className="d-flex justify-content-between">
-              <button className="signIn__btn" onClick={handleSignUp}>
+              <button className="signIn__btn" onClick={handleSignup}>
                 Sign up
               </button>
               <p>

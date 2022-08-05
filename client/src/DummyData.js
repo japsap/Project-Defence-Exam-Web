@@ -7,8 +7,8 @@ export const DummyData = {
         },
         {
             id: 2,
-            name: 'Crypto',
-            path: '/crypto'
+            name: 'Contact Us',
+            path: '/Contact'
         },
         {
             id: 3,
@@ -17,12 +17,12 @@ export const DummyData = {
         },
         {
             id: 4,
-            name: 'Contact Us',
-            path: '/Contact-us'
+            name: 'Buy Movies',
+            path: '/moviesBuy'
         }, 
         {
             id: 5,
-            name: 'Movies',
+            name: 'Watch Movies',
             path: '/movies'
         }
     ], 
@@ -43,6 +43,10 @@ export const DummyData = {
     buttonLog : {
         title : 'Log in'
     },
+
+    buttonBuy : {
+        title : "Buy Movie"
+    }
 
 
 }

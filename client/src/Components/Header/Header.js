@@ -1,12 +1,17 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+
+import { Container, Row, Col } from "react-bootstrap";
+
+import { getAuth } from "firebase/auth";
+
 import { DummyData } from "../../DummyData";
 
 //imgs
 import header__img from "../../img/header.png";
 
-const Header = ({ user }) => {
+const Header = () => {
+  const { currentUser } = getAuth()
   return (
     <Container className="my-5">
       <Row className="d-flex justify-content-center">
@@ -21,7 +26,7 @@ const Header = ({ user }) => {
           </p>
           <div className="display__flex__header">
             <button className="header__btn  mb-2"><Link to='/movies'>{DummyData.buttonTexts.title}</Link></button>
-            { user ?  '' :  <button className="header__btn__2" ><Link to='/login'>{DummyData.buttonLog.title}</Link></button>}
+            { currentUser ?  '' :  <button className="header__btn__2" ><Link to='/login'>{DummyData.buttonLog.title}</Link></button>}
           </div>
        
         </Col>

@@ -1,5 +1,7 @@
 const url = 'http://localhost:5050/jsonstore/comment';
 
+const urlBlogs = 'http://localhost:5050/jsonstore/blogs';
+
 const useCommentRest = () => {
 
     const postComment = (title) => {
@@ -9,8 +11,24 @@ const useCommentRest = () => {
         }).then(res => res.json());
     }
 
+    const postBlog = (title, text, img) => {
+        return fetch(urlBlogs, {
+            method: 'POST',
+            body: JSON.stringify({title, text, img})
+        }) .then(res => res.json())
+    }
+
+    const deleteBlog = (_id) => {
+        return fetch(`${urlBlogs}/${_id}`, {
+            method:'DELETE',
+        }).then(res => res.json())
+         
+    }
+
     return{
-        postComment
+        postComment,
+        postBlog,
+        deleteBlog,
     }
 }
 

@@ -8,7 +8,7 @@
 
 .movies__list__img {
     height: 180px;
-    width:286px ;
+    width:286px;
     object-fit: cover;
 }
 .movies__btn{
@@ -74,10 +74,11 @@
 }
 
 .form__movies button {
-    border: none;
-    color: var(--white);
-    background-color: var(--pink);
+    border: 1px solid var(--pink);
+    color: var(--pink);
+    background-color: var(--white);
     border-radius: 5px;
+    width: 160px;
 }
 
 

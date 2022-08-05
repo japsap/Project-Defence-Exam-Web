@@ -7,7 +7,9 @@ import { Container } from 'react-bootstrap';
 //components
 import Comments from '../Comments/Comments';
 
-const MoviesInfo = ({ user }) => {
+const MoviesInfo = () => {
+
+  
 
   //important stuff
   const [ mId, setMId] = useState([]);
@@ -42,7 +44,7 @@ const MoviesInfo = ({ user }) => {
 
         <p>{Plot}</p>
 
-        <Comments user={user}/>
+        <Comments/>
       </Container>
     </div>
   )

@@ -10,9 +10,9 @@ const useCommentRest = (url, defaultValue,) => {
             .then(data => {
                 setDatas(Object.values(data));
             })
-    }, []);
+    }, [url]);
 
-    return [ datas ]
+    return [ datas, setDatas ]
 
 }
 
