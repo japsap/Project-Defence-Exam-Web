@@ -16,21 +16,23 @@ const fire = initializeApp(firebaseConfig);
 const storage = getStorage();
 export const auth = getAuth(fire);
 
-export async function upload(file, currentUser, updatedName) {
+export async function uploadPicture(file, currentUser) {
   const fileRef = ref(storage, currentUser.uid + ".png");
 
   const snapshot = await uploadBytes(fileRef, file);
   const photoURL = await getDownloadURL(fileRef);
 
-  updateProfile(currentUser, { photoURL, displayName : updatedName })
-    .then(() => {
-      console.log("done");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  updateProfile(currentUser, { photoURL  })
 
-  alert("Uploaded file!");
+  alert("Profle Picture Updated!");
+  window.location.reload();
+}
+
+export async function uploadUsername(currentUser, updatedName) {
+
+  updateProfile(currentUser, { displayName : updatedName })
+
+  alert("Name Updated!");
   window.location.reload();
 }
 

@@ -1,13 +1,17 @@
 import { getAuth } from 'firebase/auth';
 import React, { useState, useEffect } from 'react';
 
-import { upload } from '../../Hooks/fire';
+import { upload, uploadPicture, uploadUsername } from '../../Hooks/fire';
+
+import { AiOutlineClose } from 'react-icons/ai'
 
 const UserUpdate = ({handleSignout}) => {
   const { currentUser } = getAuth()
   const [ photo, setPhoto ] = useState(null);
   const [ photoUrl, setPhotoUrl ] = useState('https://cdn4.vectorstock.com/i/thumb-large/62/38/avatar-13-vector-42526238.jpg');
   const [ name, setName ] = useState('');
+
+  const [ error, setError] =  useState('');
 
 
   function handleChange(e) {
@@ -16,14 +20,25 @@ const UserUpdate = ({handleSignout}) => {
     }
   }
 
-  function handleClick(e) {
+  function handleChanePicture(e) {
     e.preventDefault();
-    if(name == '' || photo == '' || name.length < 7){
+    if(photo == ''){
       alert('Please enter a correct profile data!')
     } else {
-      upload(photo, currentUser, name);
+      uploadPicture(photo, currentUser);
     }
-    
+  }
+
+  const handleChangeUsername = (e) => {
+    e.preventDefault();
+
+    if(name == '' ){
+      setError('You must put a correct username!')
+    } else if(name.length <= 5){
+      setError('Your username must unclude 6 or more characters!')
+    } else {
+      uploadUsername(currentUser, name)
+    }
   }
 
   useEffect(() => {
@@ -36,6 +51,8 @@ const UserUpdate = ({handleSignout}) => {
   return (
     <div className='d-flex justify-content-center' >
         <div className='updateUser__form' >
+
+          <AiOutlineClose className='mb-3 handleLogOut' onClick={handleSignout}/>
 
             <h1 className='text-center underline'>Update Profile</h1>
 
@@ -52,6 +69,8 @@ const UserUpdate = ({handleSignout}) => {
               />
             </div>
 
+            <button className='btns__update updatePfp mb-4' onClick={handleChanePicture}>Update Picture</button>
+
             {/* update pciture */}       
 
             <div className="logIn__group">
@@ -67,9 +86,13 @@ const UserUpdate = ({handleSignout}) => {
               <label className="logIn__label">Name</label>
             </div>
 
-            <button className='mb-3 btn-2' onClick={handleSignout}>Log out</button>
+            <p className='err__msg'>{error}</p>
 
-            <button className='btn-1' onClick={handleClick}>Update Profile</button>
+            <button className='btns__update updateUsername' onClick={handleChangeUsername}>Update Username</button>
+
+            
+
+            
 
         </div>
     </div>

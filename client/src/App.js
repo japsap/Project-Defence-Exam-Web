@@ -57,7 +57,9 @@ const App = () => {
 
   //loginout the user
   const handleSignout = () => {
-    signOut(auth);
+    if(window.confirm("Are you sure you want to log out?")){
+      signOut(auth);
+    }
   };
 
   //setting the user with the global variable
