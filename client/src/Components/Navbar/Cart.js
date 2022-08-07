@@ -64,7 +64,7 @@ const Cart = ({ moviesCart, setItems, items }) => {
       }
   }
 
-  const qty = 1;
+
 
   // ------Total Product Incart and Total Price of cart
   const cartTotalQty = products.reduce((acc, data) => acc + data.qty, 0);

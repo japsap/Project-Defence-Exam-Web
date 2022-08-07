@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+
+
 // Components
 import MainPage from "./Routes/MainPage";
 import DashBoard from "./Routes/DashBoard";
@@ -13,32 +15,24 @@ import Navbar from "./Components/Navbar/Navbar";
 import Blog from "./Routes/BlogPage";
 import MovieBuyInfo from "./Components/Blog/MovieBuyInfo";
 import Cart from "./Components/Navbar/Cart";
+import Footer from "./Components/footer/Footer";
 
 //ffirebase cfg
 import { signOut, onAuthStateChanged } from "firebase/auth";
 import { auth } from "./Hooks/fire";
 
-//provider
 
-/* 
 
- i could've created a log in with local storage and POST request to the 
- sups but, i prefer using firebase for smaller apps just to make it cleaner 
-
+/*
+  1. better ui for the movie buy poster
+  2. Contact Us page with emailJs frameWork.
+  3. cart span color (number's color is going to be white the background is going to be circle and pink color)
 */
 
 /* 
    also could've used a "Redux" or useContext to keep the App.js cleaner but,
    i did it that way because for now it helps me do things up faster later on ill be
    putting in in a different file  
-*/
-
-//todo   main page design, to thing what the functionality of the website be will be?, Login modal
-
-/* 
-  auth done 
-  ui of log in done 
-  navbar done
 */
 
 /*
@@ -79,13 +73,20 @@ const App = () => {
     authListener();
   }, []);
 
+
+  //contasts
   const [moviesCart, setMoviesCart] = useState([]);
   const [message, setMessage] = useState('')
   const [items, setItems] = useState(0);
 
+
+  //pushing the items into a simple array
   const handleChange = (item) => {
     moviesCart.push(item);
+
+    //we dont need to watch this state or any [ items, setItems ] states :( 
     setItems((prev) => prev + 1);
+
     alert('Movie successfully added!')
   };
 
@@ -123,6 +124,7 @@ const App = () => {
         <Route path="/movies" element={<Movies />} />
         <Route path="/movies/:moviesId" element={<MoviesInfo message={message}/>} />
       </Routes>
+      <Footer/>
     </>
   );
 };

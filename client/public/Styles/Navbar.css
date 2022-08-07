@@ -8,7 +8,7 @@
 
 
 
-@media screen and (max-width:1200px) {
+@media screen and (max-width:1300px) {
 
    .navbar__pc{
     display: none;
@@ -98,10 +98,17 @@
 
 
 
-@media screen and (min-width:1200px){
+@media screen and (min-width:1300px){
+   
     .cart__btn span{
-        font-size: 16px;
+        font-size: 15px;
         margin-left: 5px;
+        background-color: var(--pink);
+        color:var(--white);
+        height: 20px;
+        width: 20px;
+        text-align: center;
+        border-radius: 50%;
     }
     .name__navbar{
         margin-top: -15px;

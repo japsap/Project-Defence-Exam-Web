@@ -1,0 +1,38 @@
+:root{
+    --black: rgb(21, 21, 21);
+    --white: rgb(252, 250, 250);
+    --whitish: rgb(231, 225, 225);
+    --pink : rgb(225,22,101);
+    --gray : gray
+}
+
+@media screen and (max-width:1200px) {
+    .sidebar__dashboard .dashboard__links{
+        display: block;
+        text-align: center;
+        margin-top: 50px;
+    }    
+}
+
+@media screen and (min-width:1200px){
+    .sidebar__dashboard .dashboard__links{
+        margin: 20px;
+        display: flex;
+        justify-content: center;
+    }    
+}
+
+.sidebar__dashboard .dashboard__links li{
+    list-style: none;
+    margin-left: 20px;
+}
+.sidebar__dashboard .dashboard__links li p {
+    font-size: 16px;
+    cursor: pointer;  
+    margin-top: 20px;
+}
+.sidebar__dashboard .dashboard__links li p .icon{
+    color: var(--pink);
+    font-size: 25px;
+    margin-right: 20px;
+}

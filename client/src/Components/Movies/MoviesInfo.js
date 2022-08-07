@@ -8,21 +8,17 @@ import { Container } from 'react-bootstrap';
 import Comments from '../Comments/Comments';
 
 const MoviesInfo = () => {
-
-  
-
   //important stuff
   const [ mId, setMId] = useState([]);
+
+  const { moviesId } = useParams();
+
   const {
     imdbRating,
     Title,
     Poster,
     Plot
   } = mId
-
-
-  const { moviesId } = useParams();
-
 
   //the api cannot do sorting algos to sort the movies by lenght or anything it cant fetch by and and sort only by genre!
   useEffect(() => {

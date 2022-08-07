@@ -1,25 +1,44 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import MoviesList from "../Components/Movies/MoviesList";
 
 //compoentes
-import Navbar from "../Components/Navbar/Navbar";
 import GetMovies from "../Hooks/GetMovies";
 
 //dummy data
 import { DummyData } from "../DummyData";
 
+
+const titles = [
+  "Spiderman",
+  "Minions",
+  "Avengers",
+  "Ninja Turtles",
+  "Thor",
+  "Batman",
+  "Pirates",
+  "game of thrones",
+  "jurassic world",
+  "the godfather",
+  "need for speed"
+];
+
+const randomTitle = () => {
+  return titles[Math.floor(Math.random() * titles.length)]
+}
+
 const Movies = () => {
   const [search, setSearch] = useState("");
-  const [title, setTitle] = useState("thor");
-
+  const [title, setTitle] = useState(randomTitle());
   const [inputError, setInputError] = useState("");
 
-  const [movies] = GetMovies(
+
+  const [ movies ] = GetMovies(
     "http://www.omdbapi.com/?i=tt3896198&apikey=c8cb9cb0",
     [],
     title
   );
+
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -32,8 +51,6 @@ const Movies = () => {
       setInputError("");
     }
   };
-
-  console.log(movies)
 
   return (
     <div>

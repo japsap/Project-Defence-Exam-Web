@@ -13,13 +13,13 @@
     position: relative;
 }
 
-.handleLogOut{
-    font-size: 20px;
+.learnMore{
+    font-size: 40px;
     position: absolute;
     top: 2%;
     right: 3%;
     cursor: pointer;
-    color: red;
+    color: var(--pink);
 }
 .btns__update{
     height: 60px;

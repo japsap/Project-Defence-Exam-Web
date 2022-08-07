@@ -18,29 +18,71 @@
 
 .blog__form{
     padding: 50px;
-    border: 1px solid var(--gray);
-    border-radius: 5px;box-shadow: var(--shadow);
-    
+    display: block;
+
+}
+
+.blog__form .moviePost__input__title{
+    width: 100%;
+    margin-top: 20px;
+    padding: 20px;
+    height: 60px;
+    margin-bottom: 20px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid gray ;
+}
+
+.blog__form .moviePost__textarea{
+    width: 100%;
+    padding: 20px;
+    height: 240px;
+    margin-bottom: 20px;
+    outline: none;
+}
+
+.blog__form .price__input{
+    width: 100%;
+    height: 60px;
 }
 
 .blog__post__btn{
     width: 100%;
-    border: 1px solid var(--pink);
+    border:none;
     border-radius: 5px;
     height: 60px;
-    color: var(--pink);
+    color: var(--white);
+    background-color: var(--pink);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .delte__btn{
     cursor: pointer;
     font-size: 30px;
 }
+
 .movie__price{
     text-align: bold;
     margin-left: 20px;
     font-size: 26px;
 }
-
 
 .LearnMore__game{
     cursor: pointer;

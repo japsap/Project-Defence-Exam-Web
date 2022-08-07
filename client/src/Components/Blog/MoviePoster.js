@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
-import { Container, Row, Col} from "react-bootstrap";
-
+import { Container, Row, Col } from "react-bootstrap";
 
 import useCommentRest from "../../Hooks/useCommentRest";
 
@@ -17,24 +16,26 @@ const MoviePoster = () => {
 
   const { postBlog } = useCommentRest();
 
-  const onSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = () => {
     if (title == "" || text == "") {
       setError("Please enter a corret blog data!");
     } else {
-      postBlog(title, text, img, price, qty);
+      if(window.confirm("Are you sure you want to post the movie for sale?")){
+        postBlog(title, text, img, price, qty);
 
-      setError("");
-      setText("");
-      setTitle("");
-      setImg("");
-      setPrice("");
-
-      alert("blog posted");
-
-      navigate("/moviesBuy");
+        setError("");
+        setText("");
+        setTitle("");
+        setImg("");
+        setPrice("");
+  
+  
+        navigate("/moviesBuy");
+      }
     }
   };
+
+  console.log(error)
 
   const uploadImage = async (e) => {
     const file = e.target.files[0];
@@ -59,63 +60,53 @@ const MoviePoster = () => {
 
   return (
     <div className="blog__poster ">
+      <header
+        className="header__moviesInfo mb-3"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${img})`,
+        }}
+      />
       <Container>
-        <Row className="d-flex justify-content-center">
-          <h2 className="text-center underline-container mb-5">
-            Post a movie Buy Card
-          </h2>
+        <div className="blog__form">
+          <input
+            className="moviePost__input"
+            type="file"
+            required
+            onChange={(e) => uploadImage(e)}
+          />
 
-          <Col md={4} style={{width:'26rem'}}>
-          <form className="blog__form" onSubmit={onSubmit}>
-            <div className="logIn__group">
-              <input
-                className="logIn__input"
-                type="file"
-                required
-                onChange={(e) => uploadImage(e)}
-              />
-            </div>
+          <input
+            className="moviePost__input__title"
+            type="text"
+            required
+            value={title}
+            placeholder="Movie title..."
+            onChange={(e) => setTitle(e.target.value)}
+          />
 
-            <div className="logIn__group">
-              <input
-                className="logIn__input"
-                type="text"
-                required
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-              />
-              <span className="logIn__highlight"></span>
-              <span className="logIn__bar"></span>
-              <label className="logIn__label">Title</label>
-            </div>
+          <textarea
+            className="moviePost__textarea"
+            type="text"
+            placeholder="Movie Information..."
+            required
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          />
 
-            <div className="logIn__group">
-              <input
-                className="logIn__input"
-                type="text"
-                required
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-              />
-              <span className="logIn__highlight"></span>
-              <span className="logIn__bar"></span>
-              <label className="logIn__label">Text</label>
-            </div>
+          <input
+            className="price__input"
+            type="number"
+            value={price}
+            placeholder="Set a Price..."
+            onChange={(e) => setPrice(e.target.value)}
+          />
 
-            <input
-              className="price__input"
-              type="number"
-              value={price}
-              placeholder="Set a Price..."
-              onChange={(e) => setPrice(e.target.value)}
-            />
+          <p className="err__msg mt-3">{error}</p>
 
-            <p className="err__msg mt-3">{error}</p>
+          <button className="blog__post__btn" onClick={onSubmit}>Post It</button>
 
-            <button className="blog__post__btn">Post It</button>
-          </form>
-          </Col>
-        </Row>
+          
+        </div>
       </Container>
     </div>
   );
