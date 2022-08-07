@@ -40,7 +40,7 @@ const Navbar = ({ items }) => {
           <AiOutlineBars />
         </div>
 
-        {toggle && <Sidebar items={items}/>}
+        {toggle && <Sidebar items={items} />}
         {/* navbar mobile */}
 
         {/* navbar pc*/}
@@ -59,29 +59,46 @@ const Navbar = ({ items }) => {
 
           <div className="navbar__btn">
             {currentUser != null ? (
-              <div className="d-flex">
-                <img
-                  className="mx-2"
-                  style={{
-                    height: "50px",
-                    width: "50px",
-                    borderRadius: "50%",
-                    objectFit: "cover",
-                  }}
-                  src={
-                    currentUser.photoURL == null
-                      ? "https://cdn4.vectorstock.com/i/thumb-large/62/38/avatar-13-vector-42526238.jpg"
-                      : currentUser.photoURL
-                  }
-                />
-                <div className="d-block">
-                  <p className="ml-2 email__navbar"> {currentUser.email == null ? "uknown@gmail.com" : currentUser.email}</p>
-                  <p className="ml-2 name__navbar">  {currentUser.displayName == null ? <div className="d-flex"><span style={{color:'rgb(225,22,101)'}}>@</span><p className="text-black">Uknown</p></div>: <span className="d-flex"><span style={{color:'rgb(225,22,101)'}}>@</span><span className="text-black">{`${currentUser.displayName}`}</span></span> }
-                </p>
+              <Link to="/dashboard" style={{textDecoration:'none'}}>
+                <div className="d-flex userCredentials__navbar">
+                  <img
+                    className="mx-2"
+                    style={{
+                      height: "50px",
+                      width: "50px",
+                      borderRadius: "50%",
+                      objectFit: "cover",
+                    }}
+                    src={
+                      currentUser.photoURL == null
+                        ? "https://cdn4.vectorstock.com/i/thumb-large/62/38/avatar-13-vector-42526238.jpg"
+                        : currentUser.photoURL
+                    }
+                  />
+                  <div className="d-block">
+                    <p className="ml-2 email__navbar">
+                      {" "}
+                      {currentUser.email == null
+                        ? "uknown@gmail.com"
+                        : currentUser.email}
+                    </p>
+                    <div className="ml-2 name__navbar">
+                      {" "}
+                      {currentUser.displayName == null ? (
+                        <div className="d-flex">
+                          <span style={{ color: "rgb(225,22,101)" }}>@</span>
+                          <p className="text-black">Uknown</p>
+                        </div>
+                      ) : (
+                        <span className="d-flex">
+                          <span style={{ color: "rgb(225,22,101)" }}>@</span>
+                          <span className="text-black">{`${currentUser.displayName}`}</span>
+                        </span>
+                      )}
+                    </div>
                   </div>
-                
-                
-              </div>
+                </div>
+              </Link>
             ) : (
               <button>
                 <Link to="/login">{DummyData.buttonLog.title}</Link>

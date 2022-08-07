@@ -11,7 +11,7 @@ import { AiOutlineEdit, AiOutlineFolderOpen } from 'react-icons/ai'
 import { BiPurchaseTag } from 'react-icons/bi'
 const DashBoard = ({ handleSignout }) => {
   //toggle between updating the user or posting the blog
-  const [blogPost, setBlogPost] = useState(true);
+  const [blogPost, setBlogPost] = useState(false);
 
   return (
     <div className="dashboard">

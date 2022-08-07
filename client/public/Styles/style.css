@@ -8,6 +8,7 @@
 @import url('./Cart.css');
 @import url('./footer.css');
 @import url('./dashboard.css');
+@import url('./Contact.css');
 
 :root{
     --black: rgb(21, 21, 21);

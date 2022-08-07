@@ -35,7 +35,6 @@ const MoviePoster = () => {
     }
   };
 
-  console.log(error)
 
   const uploadImage = async (e) => {
     const file = e.target.files[0];

@@ -21,7 +21,7 @@ const Header = () => {
           </h1>
           <p>
             Our newly made website that cracks and posts the newest movies is
-            now ONLINE You can view, download, and comment on every
+            now ONLINE You can view, download and comment on every
             movie that we post here :)
           </p>
           <div className="display__flex__header">

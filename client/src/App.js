@@ -16,10 +16,12 @@ import Blog from "./Routes/BlogPage";
 import MovieBuyInfo from "./Components/Blog/MovieBuyInfo";
 import Cart from "./Components/Navbar/Cart";
 import Footer from "./Components/footer/Footer";
+import ContactMe from "./Routes/ContactMe";
 
 //ffirebase cfg
 import { signOut, onAuthStateChanged } from "firebase/auth";
 import { auth } from "./Hooks/fire";
+
 
 
 
@@ -83,13 +85,14 @@ const App = () => {
   //pushing the items into a simple array
   const handleChange = (item) => {
     moviesCart.push(item);
-
     //we dont need to watch this state or any [ items, setItems ] states :( 
     setItems((prev) => prev + 1);
 
     alert('Movie successfully added!')
   };
 
+  
+  
   return (
     <>
       <Navbar items={items} />
@@ -123,6 +126,10 @@ const App = () => {
         />
         <Route path="/movies" element={<Movies />} />
         <Route path="/movies/:moviesId" element={<MoviesInfo message={message}/>} />
+        <Route path='/contact' element={<ContactMe/>}/>
+        <Route path="*" element={<Error/>}/>
+        <Route path="/movies/:moviesId/*" element={<Error/>}/>
+        <Route path="/moviesBuy/:movesInfoId/*" element={<Error/>}/>
       </Routes>
       <Footer/>
     </>

@@ -14,7 +14,7 @@ import Navbar from "../Components/Navbar/Navbar";
 const Error = () => {
   return (
       <div className="error__section">
-        <Container className="">
+        <Container>
           <Row className="d-flex justify-content-center">
             <Col md={6}>
               <img src={error__img} className="img-fluid " />

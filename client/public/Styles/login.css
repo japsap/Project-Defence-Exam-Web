@@ -131,13 +131,16 @@
   }
 }
 
-
+.marginBottom__login{
+  margin-bottom: 700px;
+}
 
 
 .logIn__position{
   position: absolute;
   left: 50%; top: 50%;
   transform: translate(-50%,-50%);
+
 }
 
 .signIn__btn{
@@ -193,4 +196,13 @@
   background-color: #ebebeb;
   box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 1px 1px rgba(0, 0, 0, .25);
   cursor: not-allowed;
+}
+
+.logIn__icon{
+  position: absolute;
+  right: 5%;
+  cursor: pointer;
+  top: 10%;
+  font-size: 20px;
+  color: var(--pink);
 }

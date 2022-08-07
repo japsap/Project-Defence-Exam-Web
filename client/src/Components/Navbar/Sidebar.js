@@ -54,7 +54,7 @@ const Sidebar = () => {
                 ? "uknown@gmail.com"
                 : currentUser.email}
             </p>
-            <p className="ml-2 name__navbar" style={{ marginTop: "-15px" }}>
+            <div className="ml-2 name__navbar" style={{ marginTop: "-15px" }}>
               {" "}
               {currentUser.displayName == null ? (
                 <div className="d-flex">
@@ -67,7 +67,7 @@ const Sidebar = () => {
                   <span className="text-black">{`${currentUser.displayName}`}</span>
                 </span>
               )}
-            </p>
+            </div>
           </div>
         </div>
       ) : (

@@ -8,9 +8,12 @@ import {
   getAuth,
 } from "firebase/auth";
 
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordRenter, setPasswordRenter] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [hasAccount, setHasAccount] = useState(false);
@@ -45,26 +48,35 @@ const Login = () => {
   };
 
   const handleSignup = () => {
-    clearErrors();
-    createUserWithEmailAndPassword(auth, email, password)
-    .then(() => {
-        navigate("/dashboard");
-    })
-      .catch((err) => {
-        switch (err.code) {
-          case "auth/email-already-in-use":
-          case "auth/invalid-email":
-            setEmailError(err.message);
-            break;
-          case "auth/weak-password":
-            setPasswordError(err.message);
-            break;
-        }
-      });
+    if (passwordRenter === password) {
+      clearErrors();
+      createUserWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          navigate("/dashboard");
+        })
+        .catch((err) => {
+          switch (err.code) {
+            case "auth/email-already-in-use":
+            case "auth/invalid-email":
+              setEmailError(err.message);
+              break;
+            case "auth/weak-password":
+              setPasswordError(err.message);
+              break;
+          }
+        });
+    } else {
+      setPasswordError("Passwords do not match!");
+    }
   };
 
+  const [passwordShown, setPasswordShown] = useState(false);
+  const togglePasswords = () => {
+    setPasswordShown(!passwordShown)
+  }
+
   return (
-    <>
+    <div className="marginBottom__login">
       <div className="logIn__position">
         {hasAccount ? (
           <div className="logIn">
@@ -93,11 +105,26 @@ const Login = () => {
             <div className="logIn__group">
               <input
                 className="logIn__input"
-                type="password"
+                type={passwordShown ? "password" : 'text'}
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
+                {passwordShown ? (
+                <div onClick={togglePasswords}>
+                  <AiOutlineEye
+                    className="logIn__icon"
+                    // 
+                  />
+                </div>
+              ) : (
+                <div onClick={togglePasswords}>
+                  <AiOutlineEyeInvisible
+                    className="logIn__icon"
+                    // onClick={setPasswordShown((prev) => !prev)}
+                  />
+                </div>
+              )}
               <span className="logIn__highlight"></span>
               <span className="logIn__bar"></span>
               <label className="logIn__label">Password</label>
@@ -146,15 +173,45 @@ const Login = () => {
             <div className="logIn__group">
               <input
                 className="logIn__input"
-                type="password"
+                type={passwordShown ? "password" : 'text'}
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
+              {passwordShown ? (
+                <div onClick={togglePasswords}>
+                  <AiOutlineEye
+                    className="logIn__icon"
+                    // 
+                  />
+                </div>
+              ) : (
+                <div onClick={togglePasswords}>
+                  <AiOutlineEyeInvisible
+                    className="logIn__icon"
+                    // onClick={setPasswordShown((prev) => !prev)}
+                  />
+                </div>
+              )}
               <span className="logIn__highlight"></span>
               <span className="logIn__bar"></span>
               <label className="logIn__label">Password</label>
             </div>
+
+            {/* re enter password */}
+            <div className="logIn__group">
+              <input
+                className="logIn__input"
+                type={passwordShown ? "password" : 'text'}
+                required
+                value={passwordRenter}
+                onChange={(e) => setPasswordRenter(e.target.value)}
+              />
+              <span className="logIn__highlight"></span>
+              <span className="logIn__bar"></span>
+              <label className="logIn__label">Re - enter Password</label>
+            </div>
+            {/* re enter password */}
 
             <p className="err__msg">{passwordError}</p>
             {/* password */}
@@ -176,7 +233,7 @@ const Login = () => {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

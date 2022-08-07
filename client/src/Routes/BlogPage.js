@@ -29,7 +29,7 @@ const BlogPage = () => {
         <Row className="d-flex justify-content-evenly mt-5">
           <h1 className="text-center mb-5 underline-container">Buy a movie here :)</h1>
           {blogs.length === 0 ? (
-            <h1>No blogs :p</h1>
+            <p className="text-center">No Movies :p</p>
           ) : (
             <>
               {blogs.map((blog) => (
