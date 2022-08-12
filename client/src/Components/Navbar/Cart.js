@@ -264,14 +264,14 @@ const Cart = ({ moviesCart, setItems, items }) => {
       </div>
       <Container>
         <Row className="d-flex justify-content-center">
-          <Col md={6} className="text-end">
+          <Col md={3} className="text-end col__1__cart">
             <img
               src={paypal__img}
               className="img-fluid text-center"
               style={{ height: "auto", width: "200px" }}
             />
           </Col>
-          <Col md={6} className="line__style">
+          <Col md={3} className="line__style col__2__cart">
             <p className="mt-2">
               Powered by<br></br>
               PayPal

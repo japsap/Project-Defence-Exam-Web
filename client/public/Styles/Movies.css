@@ -21,7 +21,7 @@
     color: rgb(169, 169, 169);
 }
 .imageMovies:hover .card__overlay{
-    margin-top: 100px;
+    margin-top: 0px;
 }
 
 
@@ -91,9 +91,6 @@
         height: 50px;
         width: 50px;
     }
-    .card__overlay{ 
-        margin-top: 100px;
-    }
 }
 @media screen and (min-width:600px) and (max-width:900px){
     .form__movies input{
@@ -105,6 +102,19 @@
         height: 50px;
         width: 50px;
     }
+}
+@media screen and (max-width:900px) {
+    .card__overlay{
+        position: relative;
+        margin-top: 0;
+    }
+    .imageMovies:hover .card__overlay{
+        margin-top: 0px;
+    }
+    .imageMovies p {
+        display: none;
+     }
+    
 }
 
 

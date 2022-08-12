@@ -146,3 +146,13 @@
     color: var(--white);
     background-color: var(--pink);
 }
+@media screen and (max-width: 768px) {
+    .col__1__cart img{
+        margin: auto;
+        display: block;
+    }
+    .col__2__cart{
+        text-align: center;
+        border: none;
+    }
+}
