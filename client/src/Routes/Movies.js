@@ -1,13 +1,22 @@
-import React, { useEffect, useState } from "react";
+//react
+import React, { useState } from "react";
+
+//boostrap
 import { Container, Row, Col } from "react-bootstrap";
-import MoviesList from "../Components/Movies/MoviesList";
 
 //compoentes
 import GetMovies from "../Hooks/GetMovies";
+import MoviesList from "../Components/Movies/MoviesList";
 
-//dummy data
-import { DummyData } from "../DummyData";
+//icons
+import { AiOutlineSearch } from "react-icons/ai";
 
+//swipers
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Pagination, Autoplay } from "swiper";
+import "swiper/css";
+import "swiper/css/grid";
+import "swiper/css/pagination";
 
 const titles = [
   "Spiderman",
@@ -20,25 +29,33 @@ const titles = [
   "game of thrones",
   "jurassic world",
   "the godfather",
-  "need for speed"
+  "need for speed",
 ];
 
 const randomTitle = () => {
-  return titles[Math.floor(Math.random() * titles.length)]
-}
+  return titles[Math.floor(Math.random() * titles.length)];
+};
 
 const Movies = () => {
   const [search, setSearch] = useState("");
   const [title, setTitle] = useState(randomTitle());
+  const [titleTwo, setTitleTwo] = useState(randomTitle());
+
   const [inputError, setInputError] = useState("");
 
-
-  const [ movies ] = GetMovies(
+  //fetching movies for the swipper
+  const [movies] = GetMovies(
     "http://www.omdbapi.com/?i=tt3896198&apikey=c8cb9cb0",
     [],
     title
   );
 
+  //fetching movies for the swipper for the actuall show same url different movie Titles
+  const [moviess] = GetMovies(
+    "http://www.omdbapi.com/?i=tt3896198&apikey=c8cb9cb0",
+    [],
+    titleTwo
+  );
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -59,18 +76,52 @@ const Movies = () => {
           onSubmit={onSubmit}
           className="d-flex justify-content-center my-5 form__movies"
         >
-          <input
-            value={search}
-            type="text"
-            placeholder="Search for movies..."
-            onChange={(e) => setSearch(e.target.value)}
-          />
-          <button>{DummyData.searchButton.title}</button>
+          <div className="cool__submit">
+            <input
+              value={search}
+              type="text"
+              placeholder="Search for movies..."
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <button className="search__btn">
+              <AiOutlineSearch className="icon" />
+            </button>
+          </div>
         </form>
 
         <p className="text-center err__msg lead">{inputError}</p>
 
-        <Row className="d-flex justify-content-center">
+
+        
+        <Row className="d-flex justify-content-center ">
+        <h3 className="mb-4">Recomended for you: {titleTwo}</h3>
+          {moviess != "" ? (
+            <Swiper
+              slidesPerView={3}
+              spaceBetween={20}
+              showspagination="true"
+              autoplay={{
+                delay: 2500,
+              }}
+              modules={[Pagination, Autoplay]}
+              className="mySwiper"
+            >
+              {moviess?.map((movie) => (
+                 <SwiperSlide>
+                    <Col md={30} key={movie.imdbID} >
+                      <MoviesList {...movie} />
+                    </Col>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          ) : (
+            <h1>No movies found</h1>
+          )}
+        </Row>
+
+
+        <h3 className="my-5">Recomended for you: {title}</h3>
+        <Row className="d-flex justify-content-center ">
           {movies != "" ? (
             <>
               {movies?.map((movie) => (

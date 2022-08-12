@@ -3,87 +3,110 @@
     --white: rgb(252, 250, 250);
     --whitish: rgb(231, 225, 225);
     --pink : rgb(225,22,101);
-    --gray : gray
+    --gray : gray;
+    --shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+
 }
 
 .movies__list__img {
-    height: 180px;
-    width:286px;
+    height: 280px;
+    width: 286px;
     object-fit: cover;
+    
 }
 .movies__btn{
   padding: 20px;
 }
-.movies__btn button{
-    width: 100%;
-    height: 60px;
 
-    background-color: var(--white);
-    border: 1px solid var(--pink);
-    border-radius: 5px;
-    color: var(--pink);
 
-    transition: .4s;
-}
-.movies__btn button a {
-    text-decoration: none;
-    color: var(--pink);
-    transition: .4s;
+.cool__submit{
+    position: relative;
+    box-shadow: var(--shadow);
+    border-radius: 60px;
 }
 
 .form__movies input{
     color: var(--pink);
-    border: 1px solid black;
-    border:none;
-    border-bottom: 1px solid black;
+    border: 1px solid rgb(184, 183, 183);
     outline: none;
+    border-radius: 30px;
     
 }
-.form__movies input:active{
-    border: none;
-}
+
 .form__movies input::placeholder{
-    color: var(--gray);
+    color: rgb(184, 183, 183);
 }
+
+
+.form__movies .search__btn{
+    position: absolute;
+    right: 0;
+    margin: 5px;
+
+    height: 60px;
+    width: 60px;
+
+    border-radius: 50%;
+    border: none;
+    background-color: var(--pink);
+}
+
+.form__movies .search__btn .icon{
+    color:var(--white);
+    font-size: 20px;
+}
+
+@media screen and (min-width:300px) and (max-width:600px){
+    .form__movies input{
+        width: 300px;
+        height: 60px;
+        padding: 20px;
+    }  
+    .form__movies .search__btn{
+        height: 50px;
+        width: 50px;
+    }
+}
+@media screen and (min-width:600px) and (max-width:900px){
+    .form__movies input{
+        width: 500px;
+        height: 60px;
+        padding: 20px;
+    }  
+    .form__movies .search__btn{
+        height: 50px;
+        width: 50px;
+    }
+}
+
 
 @media screen and (min-width:900px) {
     .form__movies input{
-        width: 400px;
-        height: 60px;
+        width: 600px;
+        height: 70px;
         padding: 20px;
-    }
-    
-    .form__movies button{
-        margin-left: 20px;
-        height: 60px;
-        width: 140px;
-    }       
-}
-@media screen and (max-width:900px){
-    .form__movies input{
-        width: 200px;
-        height: 60px;
-        padding: 20px;
-    }
-    
-    .form__movies button{
-        margin-left: 20px;
-        height: 60px;
-        width: 60px;
-    }       
+    }   
 }
 
-.form__movies button {
-    border: 1px solid var(--pink);
-    color: var(--pink);
+
+
+.movies__btn{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.movies__btn button{
+    height: 60px;
+    width: 100%;
     background-color: var(--white);
+    border: 1px solid var(--pink);
     border-radius: 5px;
-    width: 160px;
 }
 
-
-
-
+.movies__btn button a{
+    color: var(--pink);
+    text-decoration: none;
+}
 
 .header__moviesInfo{
     height: 70vh;
