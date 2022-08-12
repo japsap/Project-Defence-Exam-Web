@@ -7,23 +7,23 @@ export const DummyData = {
         },
         {
             id: 2,
-            name: 'Contact Us',
-            path: '/Contact'
+            name: 'Buy Movies',
+            path: '/moviesBuy'
         },
         {
             id: 3,
-            name: 'Dashboard',
-            path: '/dashboard'
+            name: 'Watch Movies',
+            path: '/movies'
         },
         {
             id: 4,
-            name: 'Buy Movies',
-            path: '/moviesBuy'
+            name: 'Dashboard',
+            path: '/dashboard'
         }, 
         {
             id: 5,
-            name: 'Watch Movies',
-            path: '/movies'
+            name: 'Contact',
+            path: '/contact'
         }
     ], 
     buttonTexts : {

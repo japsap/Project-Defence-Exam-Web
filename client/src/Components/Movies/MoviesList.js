@@ -34,7 +34,7 @@ const MoviesList = (movies) => {
         <Card.ImgOverlay
           className="card__overlay"
         >
-          <Card.Title>{Title}</Card.Title>
+          <h4>{Title}</h4>
           <p>It is a long established fact that a reader will be distracted by the readable content...</p>
         </Card.ImgOverlay>
       </Card>

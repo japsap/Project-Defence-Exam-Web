@@ -24,6 +24,8 @@
     margin-top: 100px;
 }
 
+
+
 .card__overlay{
     overflow: hidden;
     color: var(--white);
@@ -88,6 +90,9 @@
     .form__movies .search__btn{
         height: 50px;
         width: 50px;
+    }
+    .card__overlay{ 
+        margin-top: 100px;
     }
 }
 @media screen and (min-width:600px) and (max-width:900px){
