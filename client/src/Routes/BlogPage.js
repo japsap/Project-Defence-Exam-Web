@@ -18,7 +18,7 @@ const BlogPage = () => {
 
   const deleteTask = (blogId) => {
     const noTasks = deleteBlog(blogId);
-    setBlogs((blog) => blog.filter((x) => x._id != blogId));
+    setBlogs((blog) => blog.filter(x => x._id != blogId))
   };
 
 

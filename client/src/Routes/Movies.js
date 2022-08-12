@@ -17,6 +17,7 @@ import SwiperCore, { Pagination, Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/grid";
 import "swiper/css/pagination";
+import Error from "../Components/Error";
 
 const titles = [
   "Spiderman",
@@ -41,7 +42,7 @@ const Movies = () => {
   const [title, setTitle] = useState(randomTitle());
   const [titleTwo, setTitleTwo] = useState(randomTitle());
 
-  const [inputError, setInputError] = useState("");
+  const [inputError, setInputError] = useState(false);
 
   //fetching movies for the swipper
   const [movies] = GetMovies(
@@ -60,12 +61,13 @@ const Movies = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (search == "") {
-      setInputError("Pleace enter a correct movie!");
+    if (search.length <= 2) {
+      setInputError(true);
+
     } else {
       setSearch("");
       setTitle(search);
-      setInputError("");
+      setInputError(false);
     }
   };
 
@@ -89,17 +91,24 @@ const Movies = () => {
           </div>
         </form>
 
-        <p className="text-center err__msg lead">{inputError}</p>
+        {inputError && <Error inputError={inputError} setInputError={setInputError}/>}
 
 
         
         <Row className="d-flex justify-content-center ">
-        <h3 className="mb-4">Recomended for you: {titleTwo}</h3>
-          {moviess != "" ? (
+        <h3 className="mb-4">Recomended for you: <strong>{titleTwo}</strong></h3>
+         
             <Swiper
+            style={{
+              "--swiper-pagination-color": "#e11665",
+              "--swiper-pagination-bullet-inactive-color": "#999999",
+              "--swiper-pagination-bullet-inactive-opacity": "1",
+              "--swiper-pagination-bullet-size": "8px",
+              "--swiper-pagination-bullet-horizontal-gap": "6px"
+            }}
               slidesPerView={3}
               spaceBetween={20}
-              showspagination="true"
+              pagination={true}
               autoplay={{
                 delay: 2500,
               }}
@@ -114,15 +123,12 @@ const Movies = () => {
                 </SwiperSlide>
               ))}
             </Swiper>
-          ) : (
-            <h1>No movies found</h1>
-          )}
         </Row>
 
 
-        <h3 className="my-5">Recomended for you: {title}</h3>
+        <h3 className="my-5">Your searches: <strong>{title}</strong></h3>
         <Row className="d-flex justify-content-center ">
-          {movies != "" ? (
+          {movies != null ? (
             <>
               {movies?.map((movie) => (
                 <Col md={3} key={movie.imdbID}>
@@ -131,7 +137,7 @@ const Movies = () => {
               ))}
             </>
           ) : (
-            <h1>No movies found</h1>
+            <h3>No movies matched your search: <strong>{title}</strong></h3>
           )}
         </Row>
       </Container>

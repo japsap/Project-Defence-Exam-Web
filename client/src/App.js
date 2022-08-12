@@ -80,6 +80,7 @@ const App = () => {
   const [moviesCart, setMoviesCart] = useState([]);
   const [message, setMessage] = useState('')
   const [items, setItems] = useState(0);
+  const [ okayStatus, setOkayStatus ] = useState(false)
 
 
   //pushing the items into a simple array
@@ -87,8 +88,7 @@ const App = () => {
     moviesCart.push(item);
     //we dont need to watch this state or any [ items, setItems ] states :( 
     setItems((prev) => prev + 1);
-
-    alert('Movie successfully added!')
+    setOkayStatus(true)
   };
 
   
@@ -111,7 +111,7 @@ const App = () => {
         <Route path="/moviesBuy" element={<Blog />} />
         <Route
           path="/moviesBuy/:movesInfoId"
-          element={<MovieBuyInfo handleChange={handleChange} />}
+          element={<MovieBuyInfo handleChange={handleChange} okayStatus={okayStatus} setOkayStatus={setOkayStatus}/>}
         />
         <Route
           path="/cart"

@@ -7,6 +7,30 @@
     --shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
 
 }
+.imageMovies{
+    text-decoration: none;
+    position: relative;
+    transition: .4s;
+}
+.imageMovies p {
+   opacity: 0;
+}
+
+.imageMovies:hover p{
+    opacity: 1;
+    color: rgb(169, 169, 169);
+}
+.imageMovies:hover .card__overlay{
+    margin-top: 100px;
+}
+
+.card__overlay{
+    overflow: hidden;
+    color: var(--white);
+    position: absolute;
+    transition: .4s;
+    margin-top: 200px;
+}
 
 .movies__list__img {
     height: 280px;
@@ -17,7 +41,6 @@
 .movies__btn{
   padding: 20px;
 }
-
 
 .cool__submit{
     position: relative;

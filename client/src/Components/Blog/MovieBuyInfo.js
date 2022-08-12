@@ -3,10 +3,12 @@ import { useParams } from "react-router";
 
 import { Container } from "react-bootstrap";
 
+import OkStatus from '../OkStatus';
+
 import useFetchId from "../../Hooks/useFetchId";
 import { DummyData } from "../../DummyData";
 
-const MovieBuyInfo = ({ handleChange, message }) => {
+const MovieBuyInfo = ({ handleChange, message, okayStatus, setOkayStatus }) => {
     const { movesInfoId } = useParams();
 
     const [ dontUseThis, b ] = useFetchId('http://localhost:5050/jsonstore/blogs', [], movesInfoId)
@@ -39,6 +41,7 @@ const MovieBuyInfo = ({ handleChange, message }) => {
 
 
         <p>{message}</p>
+        {okayStatus && <OkStatus setOkayStatus={setOkayStatus}/>}
       </Container>
     </div>
   );
