@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import GoogleButton from "react-google-button";
 
-import { auth } from "../Hooks/fire";
+import { auth, googleButtonLog } from "../Hooks/fire";
+
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -70,10 +72,19 @@ const Login = () => {
     }
   };
 
+  const handleGoogle = async () => {
+    try {
+      await googleButtonLog();
+      navigate("/dashboard");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswords = () => {
-    setPasswordShown(!passwordShown)
-  }
+    setPasswordShown(!passwordShown);
+  };
 
   return (
     <div className="marginBottom__login">
@@ -105,16 +116,16 @@ const Login = () => {
             <div className="logIn__group">
               <input
                 className="logIn__input"
-                type={passwordShown ? "password" : 'text'}
+                type={passwordShown ? "password" : "text"}
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-                {passwordShown ? (
+              {passwordShown ? (
                 <div onClick={togglePasswords}>
                   <AiOutlineEye
                     className="logIn__icon"
-                    // 
+                    //
                   />
                 </div>
               ) : (
@@ -148,7 +159,7 @@ const Login = () => {
           </div>
         ) : (
           /// email
-          <div className="signIn">
+          <div className="signIn ">
             {/* sign in text */}
             <h1>
               Sign Up<span className="pink"> :e</span>
@@ -173,7 +184,7 @@ const Login = () => {
             <div className="logIn__group">
               <input
                 className="logIn__input"
-                type={passwordShown ? "password" : 'text'}
+                type={passwordShown ? "password" : "text"}
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -182,7 +193,7 @@ const Login = () => {
                 <div onClick={togglePasswords}>
                   <AiOutlineEye
                     className="logIn__icon"
-                    // 
+                    //
                   />
                 </div>
               ) : (
@@ -202,7 +213,7 @@ const Login = () => {
             <div className="logIn__group">
               <input
                 className="logIn__input"
-                type={passwordShown ? "password" : 'text'}
+                type={passwordShown ? "password" : "text"}
                 required
                 value={passwordRenter}
                 onChange={(e) => setPasswordRenter(e.target.value)}
@@ -232,6 +243,13 @@ const Login = () => {
             </div>
           </div>
         )}
+        <button
+          type="button"
+          class="login-with-google-btn"
+          onClick={handleGoogle}
+        >
+          Sign in with Google
+        </button>
       </div>
     </div>
   );

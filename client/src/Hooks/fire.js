@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, updateProfile } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithPopup, updateProfile } from "firebase/auth";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 
 const firebaseConfig = {
@@ -26,6 +26,12 @@ export async function uploadPicture(file, currentUser) {
 
   alert("Profle Picture Updated!");
   window.location.reload();
+}
+
+
+export const googleButtonLog  = () => {
+  const provider = new GoogleAuthProvider()
+  signInWithPopup(auth, provider)
 }
 
 export async function uploadUsername(currentUser, updatedName) {
